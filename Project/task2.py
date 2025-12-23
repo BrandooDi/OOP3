@@ -51,8 +51,9 @@ class IsoscelesTriangle(Triangle):
         # Третья сторона по теореме косинусов
         rad_angle = math.radians(self.angle)
         third_side = math.sqrt(
-            self.side_a**2 + self.side_b**2 -
-            2 * self.side_a * self.side_b * math.cos(rad_angle)
+            self.side_a**2
+            + self.side_b**2
+            - 2 * self.side_a * self.side_b * math.cos(rad_angle)
         )
         return self.side_a + self.side_b + third_side
 
@@ -66,7 +67,7 @@ class EquilateralTriangle(Triangle):
 
     def area(self):
         # Площадь равностороннего треугольника: (√3/4)*a²
-        return (math.sqrt(3) / 4) * self.side_a ** 2
+        return (math.sqrt(3) / 4) * self.side_a**2
 
     def perimeter(self):
         return 3 * self.side_a
@@ -79,11 +80,7 @@ if __name__ == "__main__":
     print("=== Работа с треугольниками ===")
 
     # Создаем треугольники разных типов
-    triangles = [
-        RightTriangle(3, 4),
-        IsoscelesTriangle(5, 30),
-        EquilateralTriangle(6)
-    ]
+    triangles = [RightTriangle(3, 4), IsoscelesTriangle(5, 30), EquilateralTriangle(6)]
 
     for i, triangle in enumerate(triangles, 1):
         print(f"\nТреугольник {i}: {triangle}")
